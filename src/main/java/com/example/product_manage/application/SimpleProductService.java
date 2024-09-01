@@ -15,9 +15,11 @@ public class SimpleProductService {
 
     private final ListProductRepository listProductRepository;
     private final ModelMapper modelMapper;
+    private final ValidationService validationService;
 
     public ProductDto add(ProductDto productDto){
         Product product = modelMapper.map(productDto, Product.class);
+        validationService.checkValid(product);
 
         Product savedProduct = listProductRepository.add(product);
 

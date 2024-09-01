@@ -1,5 +1,6 @@
 package com.example.product_manage.infrastructure;
 
+import com.example.product_manage.domain.EntityNotFoundException;
 import com.example.product_manage.domain.Product;
 import org.springframework.stereotype.Repository;
 
@@ -24,7 +25,7 @@ public class ListProductRepository {
         return products.stream()
                 .filter(p -> p.sameId(id))
                 .findFirst()
-                .orElseThrow();
+                .orElseThrow(() -> new EntityNotFoundException("Product를 찾지 못했습니다."));
     }
 
     public List<Product> findAll(){

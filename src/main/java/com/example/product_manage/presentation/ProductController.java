@@ -1,6 +1,7 @@
 package com.example.product_manage.presentation;
 
 import com.example.product_manage.application.SimpleProductService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +15,11 @@ public class ProductController {
     private final SimpleProductService simpleProductService;
 
     @PostMapping("/products")
-    public ProductDto createProduct(@RequestBody ProductDto productDto){
+    public ProductDto createProduct(@Valid @RequestBody ProductDto productDto){
         return simpleProductService.add(productDto);
     }
 
-    @GetMapping("/product/{id}")
+    @GetMapping("/products/{id}")
     public ProductDto findProductById(@PathVariable Long id){
         return simpleProductService.findById(id);
     }
