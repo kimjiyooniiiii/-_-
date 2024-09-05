@@ -3,23 +3,30 @@ package com.example.product_manage.domain;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Objects;
 
+@Getter
+@Setter
 public class Product {
     private Long id;     // Wrapper Class를 사용하면 null값을 가질 수 있음. 컬렉션 기능 사용 가능
+
     @Size(min = 1, max = 100)
     private String name;
+
     @Max(1_000_000)
     @Min(0)
     private Integer price;
+
     @Max(9_999)
     @Min(0)
     private Integer amount;
 
-    public void setId(Long id){
-        this.id = id;
-    }
+   // public void setId(Long id){
+   //     this.id = id;
+   // }
 
     public Boolean sameId(Long id){
         return this.id.equals(id);

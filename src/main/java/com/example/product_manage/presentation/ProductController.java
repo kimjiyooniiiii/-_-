@@ -32,14 +32,14 @@ public class ProductController {
         return simpleProductService.findByNameContaining(name);
     }
 
-    @PutMapping("/product/{id}")
+    @PutMapping("/products/{id}")
     public ProductDto updateProduct(@PathVariable Long id, @RequestBody ProductDto productDto){
         productDto.setId(id);
 
         return simpleProductService.updateProduct(productDto);
     }
 
-    @DeleteMapping("/product/{id}")
+    @DeleteMapping("/products/{id}")
     public void deleteProduct(@PathVariable Long id){
         simpleProductService.delete(id);
     }
