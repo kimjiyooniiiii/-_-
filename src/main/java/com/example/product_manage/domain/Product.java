@@ -24,10 +24,6 @@ public class Product {
     @Min(0)
     private Integer amount;
 
-   // public void setId(Long id){
-   //     this.id = id;
-   // }
-
     public Boolean sameId(Long id){
         return this.id.equals(id);
     }
