@@ -2,6 +2,8 @@ package com.example.product_manage.infrastructure;
 
 import com.example.product_manage.domain.EntityNotFoundException;
 import com.example.product_manage.domain.Product;
+import com.example.product_manage.domain.ProductRepository;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -9,7 +11,8 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Repository
-public class ListProductRepository {
+@Profile("test")
+public class ListProductRepository implements ProductRepository {
 
     private List<Product> products = new ArrayList<>();
     private AtomicLong sequence = new AtomicLong(1L);
